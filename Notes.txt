@@ -1,0 +1,91 @@
+Software Dev methodology
+--
+  Requirements 
+    Design 
+      Development 
+        Testing 
+          Deployment 
+            Maintanance 
+
+---
+Project Name: Calc 
+Resources: FRD, HLD, LLD 
+
+Dev => QA => (bugs) => Dev => QA => (bugs) => Dev => QA => (bugs) => Dev => QA => (QA PASSED) => Deployment
+
+----
+Dev 
+==
+  Requirements: Test Cases /specs 
+    Test Case 1) Inputs should be number
+    Test Case 2) Output should also be number
+    Test Case 3) Submit button should be disabled if wrong inputs entered 
+
+  add feature
+  ---
+    function add(a, b){
+      return a + b;
+    }
+
+    add(10, 20); // 30
+    add(5, 5); // 10
+
+
+  [Tools for Testing]
+===
+
+
+Automated Testing
+====
+  0. Static Type Checking 
+      Tools: TypeScript Compiler (TSC), FlowJS / Proptypes 
+
+  1. Unit Testing [Learning]
+      * Testing small unit of a component 
+      * Testing the comp in isolation ( without connecting to rest api)
+      * Bug Reduction Density: 40% - 80%
+
+      Tools: Jasmine JS (Framework) & Karma JS (Test Runner)
+
+  2. Integration Testing 
+      * Diff units, comp, modules are tested as combined entity
+      * Behavior of the app would be tested 
+      * To expose issues in the integration of multiple units/modules/building blocks 
+
+      Examples: testing if the child comp can update parent comp 
+
+      Tools: Jasmine JS (Framework) & Karma JS (Test Runner)
+
+  3. End to End (E2E ) Testing 
+      * Testing the whole app 
+      * Usually a multi-step test combining multiple Unit and Integration tests 
+      
+      Tools: Protractor / CypressJS / Selenium 
+---
+
+
+Modern Software Dev methodology as of 2022 / Testing Approach 
+--
+
+  1. Test Driven Development (TDD)
+      * programming practice that instructs the devs to write NEW CODE only if automated test failed 
+
+      dev writes test cases => ( Instant Feedback of failure ) => dev writes functionality => ( Instant Feedback of Success ) => [CODE COMPLETE]
+
+      Tools: JEST, Mocha and Chai
+      Test Pattern: AAA (Arrange, Act, Assert)
+
+  2. Behavior Driven Development (BDD)
+      * an app is documented and designed around the Behavior,  
+        the end user expects to experience when interacting with it 
+
+      dev writes test cases => ( Instant Feedback of failure ) => dev writes functionality => ( Instant Feedback of Success ) => [CODE COMPLETE]
+
+      Tools: Jasmine JS 
+      Test Pattern: Given, When, Then
+
+====
+
+// How to Write the test cases?
+// Where to write the test cases?
+// How to test our app's functionality against the test cases we identified?
