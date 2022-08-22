@@ -47,8 +47,8 @@ describe('AppComponent', () => {
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges(); // detect the changes in app.comp.html
-    const compiled = fixture.nativeElement as HTMLElement; // taking up the app.comp.html for testing
-    expect(compiled.querySelector('h1')?.textContent).toEqual('Welcome to Unit Testing in Angular!!!');
+    const appHTML = fixture.nativeElement as HTMLElement; // taking up the app.comp.html for testing
+    expect(appHTML.querySelector('h1')?.textContent).toEqual('Welcome to Unit Testing in Angular!!!');
   });
 
   it('should have a variable with year 2022', () => {
