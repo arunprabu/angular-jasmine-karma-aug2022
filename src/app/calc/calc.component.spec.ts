@@ -34,4 +34,9 @@ describe('CalcComponent', () => {
     expect(component.add(10, 20)).toEqual(30);
     expect(component.add(5, 2)).toEqual(7);
   });
+
+  it('should have return type number', () => {
+    // checking the return type
+    expect(component.add(10, 20)).not.toBeNaN();
+  });
 });

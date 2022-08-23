@@ -17,7 +17,7 @@ export class CalcComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  add(a: number, b:number){
+  add(a: number, b:number): number {
     return a + b;
   }
 
