@@ -1,1 +1,44 @@
-<p>contact works!</p>
+<div class="row">
+  <h2>Testing Forms in Angular</h2>
+
+  <!-- Step 3: form tag equivalent in TS (FormGroup) with form tag of html  -->
+  <form class="col-md-6" [formGroup]="contactForm" (ngSubmit)="handleAddContact()">
+    <div class="mb-3">
+      <label for="nameInput" class="form-label">Enter Name</label>
+      <!-- Step 4: form element equivalents in TS (FormGroup) with form elements of html  -->
+      <!-- Ref TS for Step 5 -->
+      <input type="text" class="form-control" id="nameInput"
+      formControlName="name" 
+      [ngClass]="{ 'is-invalid': contactForm.get('name')?.touched 
+      && contactForm.get('name')?.invalid }">
+      <!-- Step 6: Display the validation messages-->
+      <div class="invalid-feedback">
+        Name is required
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="phoneInput" class="form-label">Enter Phone</label>
+      <input type="text" class="form-control" id="phoneInput" 
+      formControlName="phone" [ngClass]="{ 'is-invalid': contactForm.get('phone')?.touched 
+      && contactForm.get('phone')?.invalid }">
+      <div class="invalid-feedback">
+        <div *ngIf="contactForm.get('phone')?.errors?.['required']">Phone is required</div>
+        <div *ngIf="contactForm.get('phone')?.errors?.['minlength']">Phone should be of min 10 characters</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="emailInput" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="emailInput" 
+      formControlName="email" [ngClass]="{ 'is-invalid': contactForm.get('email')?.touched 
+      && contactForm.get('email')?.invalid }">
+      <div class="invalid-feedback">
+        <div *ngIf="contactForm.get('email')?.errors?.['required']">Email is required</div>
+        <div *ngIf="contactForm.get('email')?.errors?.['email']">Email is invalid</div>
+      </div>
+    </div>
+  
+    <!-- TODO: if validation error in form disable the submit button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div>

@@ -89,3 +89,17 @@ Modern Software Dev methodology as of 2022 / Testing Approach
 // How to Write the test cases?
 // Where to write the test cases?
 // How to test our app's functionality against the test cases we identified?
+
+
+
+
+==
+Angular Forms
+--
+  1. Template-Driven Forms 
+    * made with HTML 
+    * not suitable for Unit testing 
+
+  2. Reactive Forms (Recommended)
+    * made with HTML + TS 
+    * suitable for Unit testing 
