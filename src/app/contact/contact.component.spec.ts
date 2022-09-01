@@ -52,7 +52,7 @@ describe('ContactComponent', () => {
   // SpyOn is a Jasmine feature that allows dynamically intercepting 
   // the calls to a function and change its result. 
   it('should call the handleAddContact', () => {
-    // Kohli is spied by Smith
+    // component = 11 players | handleAddContact = Kohli | Kohli is spied by Smith
     spyOn(component, 'handleAddContact'); // Install a spy onto an existing object.
     // find out submit button element from html 
     const btnEl = fixture.debugElement.query(By.css('button')).nativeElement;
