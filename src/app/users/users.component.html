@@ -1,1 +1,17 @@
-<p>users works!</p>
+<div>
+  <h2>Users | Testing LifeCycle Hook (ngOnInit) with timeout</h2>
+
+  <div *ngIf="isLoading; else cityInfo;" class="spinner-border text-info" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <ng-template #cityInfo>
+    <p>City: {{myCity}}</p>
+  </ng-template>
+
+  <div *ngFor="let user of userList" class="card">
+    <p>Id: {{user.id}}</p>
+    <p class="userName">Name: {{user.name}}</p>
+    <p>Phone: {{user.phone}}</p>
+  </div>
+  
+</div>

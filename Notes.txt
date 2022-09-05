@@ -103,3 +103,29 @@ Angular Forms
   2. Reactive Forms (Recommended)
     * made with HTML + TS 
     * suitable for Unit testing 
+
+
+
+Components
+---
+  Lifecycle Hooks 
+
+Component + Service call
+---
+  REST API CALL with mocks 
+
+Service
+--
+  Testing Service
+    createTodo
+    listTodos
+    SpyOn
+
+Pipes 
+--
+  Testing Pipes 
+  
+Directives
+---
+  Testing Directives
+
