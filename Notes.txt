@@ -106,24 +106,32 @@ Angular Forms
 
 
 
-Components
----
-  Lifecycle Hooks 
+Components [DONE]
+Directives 
+Services 
+Pipes 
 
-Component + Service call
----
-  REST API CALL with mocks 
+[Classes/Models 
+Guards
+Interceptors]
 
-Service
---
-  Testing Service
-    createTodo
-    listTodos
-    SpyOn
+
+
+
+
+
+
 
 Pipes 
 --
   Testing Pipes 
+
+
+Service
+--
+  Testing Service
+    getPosts
+    SpyOn
   
 Directives
 ---

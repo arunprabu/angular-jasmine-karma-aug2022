@@ -9,7 +9,9 @@ import { AboutComponent } from './about/about.component';
 import { UsersComponent } from './users/users.component';
 import { ContactComponent } from './contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { BlogComponent } from './blog/components/blog/blog.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EllipsisPipe } from './shared/pipes/ellipsis.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,12 +19,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     AboutComponent,
     UsersComponent,
-    ContactComponent
+    ContactComponent,
+    BlogComponent,
+    EllipsisPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
