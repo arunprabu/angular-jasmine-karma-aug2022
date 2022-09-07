@@ -107,9 +107,14 @@ Angular Forms
 
 
 Components [DONE]
-Directives 
-Services 
-Pipes 
+Pipes [DONE]
+
+Friday
+--
+Router Testing 
+Directives  Testing 
+Services Testing 
+
 
 [Classes/Models 
 Guards
@@ -122,9 +127,6 @@ Interceptors]
 
 
 
-Pipes 
---
-  Testing Pipes 
 
 
 Service

@@ -1,19 +1,27 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { BlogService } from '../../services/blog.service';
 
 import { BlogComponent } from './blog.component';
+
+class MockUserService {
+  isLoggedIn = true;
+  user = { name: 'Test User'};
+}
+
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
   let fixture: ComponentFixture<BlogComponent>;
   let blogService: BlogService;
 
+  
   const mockPostList: any[] = [
     {
       id: 45,
-      title: "ut numquam possimus omnis eius suscipit laudantium iure",
+      title: "my first post",
       body: "est natus reiciendis nihil possimus aut providentex et dolor"
     },
     {
@@ -80,5 +88,11 @@ describe('BlogComponent', () => {
     expect(component.postList).toEqual(mockPostList);
   });
 
+  it(`should have 'my first post' in html`, () => {
+    // The following is working because we have fixture.detectChanges() in beforeEach
+    const blogHTML = fixture.nativeElement as HTMLElement;
+    const cardTitlEl = blogHTML.querySelector('.card-title');
+    expect(cardTitlEl?.textContent).toBe('my first post');
+  });
 
 });
