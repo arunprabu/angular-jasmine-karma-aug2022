@@ -20,12 +20,11 @@ export class ContactService {
   }
 
   getContacts(){
-    return [{
-      id: 1, 
-      name: 'Steve',
-      phone: 32232323,
-      email: 's@t.com'
-    }];
+    return this.http.get('https://jsonplaceholder.typicode.com/users')
+      .pipe( map( (res: any) => {
+        console.log(res);
+        return res;
+      } ));
   }
 
   
