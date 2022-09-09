@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ContactService } from './services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +14,7 @@ export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
   isSubmitted = false;
 
-  constructor() { }
+  constructor( private contactService: ContactService) { }
 
   ngOnInit(): void {
     this.contactForm = new FormGroup({
@@ -28,6 +29,11 @@ export class ContactComponent implements OnInit {
     console.log(this.contactForm);
     console.log(this.contactForm.value); // submittable form data
     this.isSubmitted = true;
+
+    this.contactService.createContact(this.contactForm.value)
+      .subscribe( (res: any ) =>{
+        console.log(res);
+      });
   }
 
 }

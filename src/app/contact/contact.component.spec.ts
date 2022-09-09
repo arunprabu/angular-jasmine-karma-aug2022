@@ -1,18 +1,28 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 import { ContactComponent } from './contact.component';
+import { ContactService } from './services/contact.service';
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
   let fixture: ComponentFixture<ContactComponent>;
+  let contactService: ContactService;
 
   beforeEach(async () => {
     // the following is like app.module
     await TestBed.configureTestingModule({
       declarations: [ ContactComponent ],
-      imports: [ReactiveFormsModule]
+      imports: [
+        ReactiveFormsModule, 
+        HttpClientModule
+      ],
+      providers: [
+        ContactService
+      ]
     })
     .compileComponents();
   });
@@ -20,11 +30,18 @@ describe('ContactComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ContactComponent);
     component = fixture.componentInstance;
+    contactService = TestBed.inject(ContactService); // IMPORTANT FOR SPYING DEP INJ SERVICE
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call ngOnInit', () => {
+    spyOn(component, 'ngOnInit').and.callThrough();
+    component.ngOnInit();
+    expect(component.ngOnInit).toHaveBeenCalled();
   });
 
   // it('should set isSubmitted to true upon form submit', () => {
@@ -61,6 +78,44 @@ describe('ContactComponent', () => {
     // checking whether John has interacted with Kohli or not -- Smith can confirm it
     expect(component.handleAddContact).toHaveBeenCalled(); 
   });
+
+  // IMPORTANT: the following spyOn test specs 
+  it('should call createContact of ContactService after submitting valid form', (done: DoneFn) => {
+    // setting up form with valid inputs
+    component.contactForm?.controls['name'].setValue('John');
+    component.contactForm?.controls['phone'].setValue('1234567890');
+    component.contactForm?.controls['email'].setValue('j@k.com');
+
+    // let val!: Observable<any>;
+    spyOn(contactService, 'createContact');
+    // const compiled = fixture.debugElement.nativeElement;
+    const btnEl = fixture.debugElement.query(By.css('.add-contact-btn')).nativeElement;
+    btnEl.click();
+    expect(contactService.createContact).toHaveBeenCalledWith(component.contactForm.value);
+    done();
+  });
+
+  // negative test spec
+  it('should receive error if wrong inputs are submitted to createContact', () => {
+    let formData = {
+      name: '',
+      phone: '',
+      email: ''
+    }
+    spyOn(contactService, 'createContact').and.throwError('error');
+    expect( () => {
+      contactService.createContact(formData)
+    }).toThrow(new Error('error'));
+  });
+
+  // another negative test spec
+  it('should receive error if createContact called with undefined', () => {
+    spyOn(contactService, 'createContact').and.throwError('error');
+    expect( () => {
+      contactService.createContact(undefined)
+    }).toThrow(new Error('error'));
+  });
+
 
 
 });
